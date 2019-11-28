@@ -1,0 +1,16 @@
+{
+  "name": "@pi-team-mn/raw-database",
+  "description": "Read raw JSON files and parse them into an in memory database",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.12.14",
+    "typescript": "^3.7.2"
+  }
+}

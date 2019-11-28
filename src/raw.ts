@@ -6,7 +6,6 @@ const readFilePromise = (file: string) => new Promise<Buffer>((resolve, reject) 
 export const readAndParse = async <T>(dataDirectory: string): Promise<T[]> => readAllDataFiles(dataDirectory).then(items => items.map(value => <T>value));
 
 export const readAllDataFiles = async (dataDirectory: string) => (await readdirPromise(dataDirectory))
-    .filter((file: string))
     .map((file: string) => readDataFile(dataDirectory, file))
     .reduce(async (previousValue, currentValue) => (await previousValue).concat(await currentValue));
 

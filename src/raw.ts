@@ -9,7 +9,11 @@ const readFilePromise = (file: string) => new Promise<Buffer>((resolve, reject) 
 
 export const isOfType = <T extends BasicDatabaseItem>(item: any) => (item as T).identifier !== undefined;
 
-export const readAndParse = async <T>(dataDirectory: string): Promise<T[]> => readAllDataFiles(dataDirectory).then(items => items.map(value => <T>value));
+export const readAndParse = async <T extends BasicDatabaseItem>(dataDirectory: string): Promise<T[]> => readAllDataFiles(dataDirectory)
+    .then(items => items
+        .filter(value => isOfType<T>(value))
+        .map(value => <T>value)
+    );
 
 export const readAllDataFiles = async (dataDirectory: string) => (await readdirPromise(dataDirectory))
     .map((file: string) => readDataFile(dataDirectory, file))

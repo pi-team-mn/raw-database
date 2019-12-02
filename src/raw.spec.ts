@@ -7,7 +7,7 @@ interface testInterface extends BasicDatabaseItem {
 }
 
 describe('database', () => {
-    describe.only('isOfType', () => {
+    describe('isOfType', () => {
         it('it maches all required properties', () => {
             const result = isOfType<testInterface>({
                 identifier: "test"
@@ -24,6 +24,7 @@ describe('database', () => {
             expect(result).to.be.false;
         })
     });
+
     describe('readDataFile', () => {
         it('reads a file', async () => {
             const result = await readDataFile("./data", "test.json");
